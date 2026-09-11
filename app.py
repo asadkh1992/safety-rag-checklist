@@ -371,7 +371,7 @@ Return JSON:
 }}
 """
 
-    model = st.session_state.get("groq_model", "llama-3.3-70b-versatile")
+    model = st.session_state.get("groq_model", "openai/gpt-oss-120b")
     response = client.chat.completions.create(
         model=model,
         temperature=0.15,
@@ -397,9 +397,10 @@ with st.sidebar:
     st.session_state.groq_model = st.selectbox(
         "Groq model",
         [
-            "llama-3.3-70b-versatile",
-            "llama-3.1-8b-instant",
-        ],
+    "openai/gpt-oss-120b",
+    "qwen/qwen3.6-27b",
+    "openai/gpt-oss-20b",
+],
         index=0,
     )
     top_k = st.slider("RAG results", 5, 20, 12)
